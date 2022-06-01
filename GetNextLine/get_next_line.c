@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 20:14:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/04/27 17:08:34 by daparici         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:35:19 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,22 +105,22 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
+int	main(void)
+{
+	int		fd;
+	char	*line;
 
-// 	fd = open("gnl.txt", O_RDONLY);
-// 	line = get_next_line(fd);
-// 	printf("primera linea:%s", line);
-// 	line = get_next_line(fd);
-// 	printf("segunda linea:%s", line);
-// 	line = get_next_line(fd);
-// 	printf("tercera linea:%s", line);
-// 	line = get_next_line(fd);
-// 	printf("cuarta linea:%s", line);
-// 	line = get_next_line(fd);
-// 	printf("quinta linea:%s\n", line);
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open("gnl.txt", O_RDONLY);
+	line = get_next_line(fd);
+	printf("primera linea:%s", line);
+	line = get_next_line(fd);
+	printf("segunda linea:%s", line);
+	line = get_next_line(fd);
+	printf("tercera linea:%s", line);
+	line = get_next_line(fd);
+	printf("cuarta linea:%s", line);
+	line = get_next_line(fd);
+	printf("quinta linea:%s\n", line);
+	close(fd);
+	return (0);
+}

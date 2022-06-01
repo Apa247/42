@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:26:34 by daparici          #+#    #+#             */
-/*   Updated: 2022/04/27 17:33:30 by daparici         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:22:37 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,19 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-// int main()
-// {
-// 	//int	g;
-// 	int len;
+int main()
+{
+	//int	g;
+	int len;
 
-// 	//g = 3;
-// 	//ft_printf("hola papu\n%x\n", 0);
-// 	//printf("hola papu\n%x\n", 0);
-// 	len = ft_printf("hola papu\n%x\n", 2147483646);
-// 	//printf("%p", &g);
-// 	 if (len == printf("hola papu\n%x\n", 2147483646))
-// 	 	write(1, "bien", 4);
-// 	 else
-// 	 	write(1, "mal", 3);
-// 	return (0);
-// }
+	//g = 3;
+	//ft_printf("hola papu\n%x\n", 0);
+	//printf("hola papu\n%x\n", 0);
+	len = ft_printf("hola papu\n%x\n", 2147483646);
+	//printf("%p", &g);
+	 if (len == printf("hola papu\n%x\n", 2147483646))
+	 	write(1, "bien", 4);
+	 else
+	 	write(1, "mal", 3);
+	return (0);
+}
