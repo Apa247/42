@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/02 20:13:29 by daparici          #+#    #+#             */
+/*   Updated: 2022/06/02 21:59:49 by daparici         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mlx.h>
 
 typedef struct s_data
@@ -11,26 +23,37 @@ typedef struct s_data
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-int main (void)
+int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
+	int		x;
+	int		y;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Fractol!");
 	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.img = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								 &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	x = 0;
+	while (x < 100)
+	{
+		y = 0;
+		while (y < 100)
+		{
+			my_mlx_pixel_put(&img, x, y, 0x00FF0000);
+			y++;
+		}
+		my_mlx_pixel_put(&img, x, y, 0x00FF0000);
+		x++;
+	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
-
-
 }
