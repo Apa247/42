@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/22 21:25:39 by daparici         ###   ########.fr       */
+/*   Updated: 2022/06/22 22:10:42 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,64 @@ void	chech_map_parms(int fd, t_map *map)
 {
 	char	*map_str;
 
-	map_str = NULL;
+	map_str = ft_strdup("");
 	*map = ft_initmap();
 	ft_read_map(fd, map, &map_str);
 }
 
-char	*ft_read_map(int fd, t_map map, char **map_str)
+char	*ft_read_map(int fd, t_map *map, char **map_str)
 {
 	char	*line;
 	char	*last_line;
 
 	line = NULL;
 	last_line = NULL;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+		{
+			if (!map->n_col)
+				error_msg("Map is empty!", NULL);
+			else
+				ft_add_map_parms(last_line, map);
+			free(last_line);
+			break ;
+		}
+		free(last_line);
+		ft_add_map_parms(line, map);
+		last_line = ft_substr(line, 0, ft_strlen(line));
+		free(line);
+		map_str = ft_strjoin(map_str, last_line);
+		map->n_row++;
+	}
+	free(line);
+}
+
+void	ft_add_map_params(char *line, t_map	*map)
+{
+	if (!map->n_col)
+		map->n_col = ft_strlen(line) - 1;
+	map->n_exit += ft_count_params(line, 'E');
+	map->n_pl += ft_count_params(line, 'P');
+	map->n_en += ft_count_params(line, 'G');
+	map->n_collect += ft_count_params(line, 'C');
+}
+
+int	ft_count_params(char *line, char c)
+{
+	int	count;
+
+	count = 0;
+	if (!line)
+		return (0);
+	while (*line)
+	{
+		if (*line == c)
+			count++;
+		line++;
+	}
+	return (count);
 }
 
 t_map ft_initmap(void)
@@ -76,7 +122,7 @@ t_map ft_initmap(void)
 	map.n_col = 0;
 	map.n_exit = 0;
 	map.n_pl = 0;
-	map.n_gh = 0;
+	map.n_en = 0;
 	map.n_collect = 0;
 	**map.split_map = NULL;
 }

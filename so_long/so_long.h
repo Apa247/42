@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/22 19:51:03 by daparici         ###   ########.fr       */
+/*   Updated: 2022/06/22 22:08:26 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_map
 	int		n_col;
 	int		n_exit;
 	int		n_pl;
-	int		n_gh;
+	int		n_en;
 	int		n_collect;
 	char	**split_map;
 }				t_map;
