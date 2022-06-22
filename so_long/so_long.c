@@ -12,10 +12,8 @@
 
 #include "so_long.h"
 
-int	error_msg(char *msg, char **map_str)
+int	error_msg(char *msg)
 {
-	if (map_str)
-		free(*map_str);
 	printf("Error\n%s\n", msg);
 	exit(0);
 	return (0);
@@ -57,9 +55,15 @@ void	chech_map_parms(int fd, t_map *map)
 	map_str = ft_strdup("");
 	*map = ft_initmap();
 	ft_read_map(fd, map, &map_str);
+	map->split_map = ft_split(map_str, '\n');
+	if (!map)
+		error_msg("Memory allocation error!");
+	close(fd);
+	free(map_str);
+	check_map_error(map->split_map, map);
 }
 
-char	*ft_read_map(int fd, t_map *map, char **map_str)
+void	ft_read_map(int fd, t_map *map, char **map_str)
 {
 	char	*line;
 	char	*last_line;
@@ -91,10 +95,9 @@ char	*ft_read_map(int fd, t_map *map, char **map_str)
 void	ft_add_map_params(char *line, t_map	*map)
 {
 	if (!map->n_col)
-		map->n_col = ft_strlen(line) - 1;
+		map->n_col = ft_strlen(line);
 	map->n_exit += ft_count_params(line, 'E');
 	map->n_pl += ft_count_params(line, 'P');
-	map->n_en += ft_count_params(line, 'G');
 	map->n_collect += ft_count_params(line, 'C');
 }
 
@@ -114,6 +117,27 @@ int	ft_count_params(char *line, char c)
 	return (count);
 }
 
+void	check_map_error(char **split_map, t_map *map)
+{
+	int	i;
+	int	k;
+
+	i = 0;
+	if (map)
+	while (split_map[i])
+	{
+		k = 0;
+		if (ft_strlen(split_map[0]) != ft_strlen(split_map[i]))
+			error_msg("Map must be rectangular!");
+		while (split_map[i][k])
+		{
+			if (split_map[0][k] != '1' || split_map[map->n_row - 1][k] != '1')
+				error_msg("Map must be surrounded by walls!")
+
+		}
+	}
+}
+
 t_map ft_initmap(void)
 {
 	t_map	map;
@@ -122,7 +146,6 @@ t_map ft_initmap(void)
 	map.n_col = 0;
 	map.n_exit = 0;
 	map.n_pl = 0;
-	map.n_en = 0;
 	map.n_collect = 0;
 	**map.split_map = NULL;
 }

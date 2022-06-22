@@ -28,7 +28,6 @@ typedef struct s_map
 	int		n_col;
 	int		n_exit;
 	int		n_pl;
-	int		n_en;
 	int		n_collect;
 	char	**split_map;
 }				t_map;
