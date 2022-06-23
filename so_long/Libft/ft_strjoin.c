@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:08:52 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/23 12:57:26 by daparici         ###   ########.fr       */
+/*   Updated: 2022/06/23 13:21:42 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char **s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char			*str;
 	unsigned int	i;

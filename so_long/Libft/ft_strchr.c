@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 14:08:52 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/23 12:57:26 by daparici         ###   ########.fr       */
+/*   Created: 2022/03/24 16:59:05 by daparici          #+#    #+#             */
+/*   Updated: 2022/03/30 21:39:54 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char **s1, char *s2)
+char	*ft_strchr(const char *s, int c)
 {
-	char			*str;
-	unsigned int	i;
-	unsigned int	i2;
+	int		i;
 
 	i = 0;
-	i2 = 0;
-	if (!s1 || !s2)
-		return (0);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	while (s1[i])
+	if (*s == '\0' && c == '\0')
+		return ((char *)&s[i]);
+	while (s[i])
 	{
-		str[i] = s1[i];
-		i++;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		else
+			i++;
 	}
-	while (s2[i2])
-	{
-		str[i] = s2[i2];
-		i++;
-		i2++;
-	}
-	str[i] = '\0';
-	return ((char *)str);
+	if (c == '\0')
+		return ((char *)&s[i]);
+	return (0);
 }
+
+/*int main (void)
+{
+	const char *s = "";
+
+	puts(strchr(s, '\0'));
+	puts(ft_strchr(s, '\0'));
+	return (0);
+}*/

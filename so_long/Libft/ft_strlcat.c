@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 14:08:52 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/23 12:57:26 by daparici         ###   ########.fr       */
+/*   Created: 2022/03/24 16:02:09 by daparici          #+#    #+#             */
+/*   Updated: 2022/03/30 15:21:41 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strjoin(char **s1, char *s2)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char			*str;
-	unsigned int	i;
-	unsigned int	i2;
+	size_t		i;
+	size_t		len;
 
+	len = ft_strlen(dst) + ft_strlen(src);
+	if (size <= ft_strlen(dst))
+		return (ft_strlen(src) + size);
+	while (*dst)
+		dst++;
 	i = 0;
-	i2 = 0;
-	if (!s1 || !s2)
-		return (0);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	while (s1[i])
+	while ((i < size - (len - ft_strlen(src)) - 1) && src[i])
 	{
-		str[i] = s1[i];
+		dst[i] = src[i];
 		i++;
 	}
-	while (s2[i2])
-	{
-		str[i] = s2[i2];
-		i++;
-		i2++;
-	}
-	str[i] = '\0';
-	return ((char *)str);
+	dst[i] = '\0';
+	return (len);
 }
