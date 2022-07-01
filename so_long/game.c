@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/24 16:54:10 by daparici         ###   ########.fr       */
+/*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
+/*   Updated: 2022/06/24 17:56:49 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	error_msg(char *msg)
+void	start_game(t_map map)
 {
-	printf("Error\n%s\n", msg);
-	exit(0);
-	return (0);
-}
+	t_game	game;
 
-int	main(int argc, char **argv)
-{
-	t_map	map;
-
-	check_map(argc, argv, &map);
-	start_game(map);
-	printf("%s\n", "OK");
-	return (0);
+	game.mlx = mlx_init();
+	game.mlx_window = mlx_new_window(game.mlx, map.n_col * SIZE, \
+		map.n_row * SIZE, "So_long");
+	mlx_loop(game.mlx);
 }
