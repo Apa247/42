@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/15 15:31:52 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/16 08:21:19 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ void	put_imagen_map(t_map map, t_game *game)
 			if (map.split_map[i][k] == '0')
 				put_imagen_xpm(game, "./sprites/suelo.xpm", i, k);
 			if (map.split_map[i][k] == 'C')
+			{
+				put_imagen_xpm(game, "./sprites/suelo.xpm", i, k);
 				put_imagen_xpm(game, "./sprites/comestible.xpm", i, k);
+			}
 			if (map.split_map[i][k] == 'E')
-				put_imagen_xpm(game, "./sprites/salida1.xpm", i, k);
+				put_imagen_xpm(game, "./sprites/capsula.xpm", i, k);
 			if (map.split_map[i][k] == 'P')
 				put_imagen_xpm(game, "./sprites/goku.xpm", i, k);
 		}
