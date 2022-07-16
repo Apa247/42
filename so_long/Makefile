@@ -6,13 +6,13 @@
 #    By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 12:38:29 by daparici          #+#    #+#              #
-#    Updated: 2022/06/24 17:07:53 by daparici         ###   ########.fr        #
+#    Updated: 2022/07/15 13:31:29 by daparici         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = So_long
 CC = gcc 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 AR = ar rcs
 
 SRCS = so_long.c check_map_1.c check_map_2.c game.c
