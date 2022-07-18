@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/15 15:28:37 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:54:48 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,19 @@
 
 typedef struct s_map
 {
+	void	*mlx;
+	void	*mlx_window;
 	int		n_row;
 	int		n_col;
 	int		n_exit;
 	int		n_pl;
 	int		n_collect;
 	char	**split_map;
-}				t_map;
-
-typedef struct s_game
-{
-	void	*mlx;
-	void	*mlx_window;
 	int		n_moves;
 	int		n_frames;
 	int		width;
 	int		height;
-}				t_game;
+}				t_map;
 
 int		error_msg(char *msg);
 void	check_map(int argc, char **argv, t_map *map);
@@ -56,10 +52,13 @@ void	ft_add_map_params(char *line, t_map	*map);
 int		ft_count_params(char *line, char c);
 int		check_map_error(t_map *map);
 t_map	ft_initmap(void);
-void	start_game(t_map map);
-void	put_imagen_map(t_map map, t_game *game);
-void	get_type_params(t_map map, t_game *game, int i, int k);
-void	put_imagen_xpm(t_game *game, char *adress_img, int x, int y);
-t_game	*params_init(t_game *game);
+void	start_game(t_map *map);
+void	put_imagen_map(t_map *map);
+void	get_type_params(t_map map, int i, int k);
+void	put_imagen_xpm(t_map *map, char *adress_img, int x, int y);
+t_map	*params_init(t_map *map);
+void	freemap(t_map *map);
+int		closewin(t_map *map);
+int		key_select(int keycode, t_map *map);
 
 #endif

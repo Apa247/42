@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/24 16:54:10 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:22:22 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,26 @@ int	error_msg(char *msg)
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
+	t_map	*map;
 
-	check_map(argc, argv, &map);
+	map = ft_calloc(sizeof(t_map), 1);
+	map = params_init(map);
+	check_map(argc, argv, map);
 	start_game(map);
 	printf("%s\n", "OK");
 	return (0);
+}
+
+t_map	*params_init(t_map *map)
+{
+	map->n_row = 0;
+	map->n_col = 0;
+	map->n_exit = 0;
+	map->n_pl = 0;
+	map->n_collect = 0;
+	map->n_frames = 0;
+	map->n_moves = 0;
+	map->width = 0;
+	map->height = 0;
+	return (map);
 }

@@ -6,78 +6,110 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/16 08:21:19 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/18 21:02:01 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	start_game(t_map map)
+void	freemap(t_map *map)
 {
-	t_game	*game;
+	int	i;
 
-	game = ft_calloc(sizeof(t_game), 1);
-	game = params_init(game);
-	game->mlx = mlx_init();
-	game->mlx_window = mlx_new_window(game->mlx, map.n_col * SIZE, \
-		map.n_row * SIZE, "So_long");
-	put_imagen_map(map, game);
-	mlx_loop(game->mlx);
+	while (map->split_map)
+	{
+		i = -1;
+		while (map->split_map[++i])
+			free(map->split_map[i]);
+		free(map->split_map);
+	}
+	// if (map->mlx && map->mlx_window)
+	// {
+	// 	mlx_clear_window(map->mlx, map->mlx_window);
+	// 	mlx_destroy_window(map->mlx, map->mlx_window);
+	// }
 }
 
-void	put_imagen_map(t_map map, t_game *game)
+int	closewin(t_map *map)
+{
+	freemap(map);
+	printf("Finished\n");
+	exit (0);
+	return (0);
+}
+
+void	start_game(t_map *map)
+{
+	map->mlx = mlx_init();
+	map->mlx_window = mlx_new_window(map->mlx, map->n_col * SIZE, \
+		map->n_row * SIZE, "So_long");
+	put_imagen_map(map);
+	mlx_hook(map->mlx_window, 17, 1L << 17, closewin, &map);
+	mlx_key_hook(map->mlx_window, key_select, &map);
+	mlx_loop(map->mlx);
+}
+
+int	key_select(int keycode, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if (keycode == 53)
+	{
+		printf("finished!\n");
+//		freemap(map);
+		exit(0);
+	}
+	if (map->split_map)
+		return (0);
+	return (0);
+}
+
+void	put_imagen_map(t_map *map)
 {
 	int	i;
 	int	k;
 
 	i = -1;
-	while (map.split_map[++i])
+	while (map->split_map[++i])
 	{
 		k = -1;
-		while (map.split_map[i][++k])
+		while (map->split_map[i][++k])
 		{
-			if (map.split_map[i][k] == '1')
-				put_imagen_xpm(game, "./sprites/pared.xpm", i, k);
-			if (map.split_map[i][k] == '0')
-				put_imagen_xpm(game, "./sprites/suelo.xpm", i, k);
-			if (map.split_map[i][k] == 'C')
+			if (map->split_map[i][k] == '1')
+				put_imagen_xpm(map, "./sprites/pared.xpm", i, k);
+			if (map->split_map[i][k] == '0')
+				put_imagen_xpm(map, "./sprites/suelo.xpm", i, k);
+			if (map->split_map[i][k] == 'C')
 			{
-				put_imagen_xpm(game, "./sprites/suelo.xpm", i, k);
-				put_imagen_xpm(game, "./sprites/comestible.xpm", i, k);
+				put_imagen_xpm(map, "./sprites/suelo.xpm", i, k);
+				put_imagen_xpm(map, "./sprites/comestible.xpm", i, k);
 			}
-			if (map.split_map[i][k] == 'E')
-				put_imagen_xpm(game, "./sprites/capsula.xpm", i, k);
-			if (map.split_map[i][k] == 'P')
-				put_imagen_xpm(game, "./sprites/goku.xpm", i, k);
+			if (map->split_map[i][k] == 'E')
+				put_imagen_xpm(map, "./sprites/capsula.xpm", i, k);
+			if (map->split_map[i][k] == 'P')
+				put_imagen_xpm(map, "./sprites/goku.xpm", i, k);
 		}
 	}
 }
 
-void	put_imagen_xpm(t_game *game, char *adress_img, int x, int y)
+void	put_imagen_xpm(t_map *map, char *adress_img, int x, int y)
 {
 	void	*img;
 	int		res;
 
 	res = 47;
-	game->width = (res * y);
-	game->height = (res * x);
-	img = mlx_xpm_file_to_image(game->mlx, adress_img,
+	map->width = (res * y);
+	map->height = (res * x);
+	img = mlx_xpm_file_to_image(map->mlx, adress_img,
 			&res, &res);
 	if (!img)
 	{
 		printf("ERROR\n");
 		exit(1);
 	}
-	mlx_put_image_to_window(game->mlx, game->mlx_window, img,
-		game->width, game->height);
-	mlx_destroy_image(game->mlx, img);
+	mlx_put_image_to_window(map->mlx, map->mlx_window, img,
+		map->width, map->height);
+	mlx_destroy_image(map->mlx, img);
 }
 
-t_game	*params_init(t_game *game)
-{
-	game->n_frames = 0;
-	game->n_moves = 0;
-	game->width = 0;
-	game->height = 0;
-	return (game);
-}

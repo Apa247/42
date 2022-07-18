@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 14:12:36 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/24 14:17:30 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:08:46 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	check_map_params(int fd, t_map *map)
 	char	*map_str;
 
 	map_str = ft_strdup("");
-	*map = ft_initmap();
 	ft_read_map(fd, map, &map_str);
 	map->split_map = ft_split(map_str, '\n');
 	if (!map)
@@ -49,16 +48,4 @@ void	check_map_params(int fd, t_map *map)
 	check_map_error(map);
 	if (map->n_collect < 1 || map->n_exit < 1 || map->n_pl < 1)
 		error_msg("Missing parameters");
-}
-
-t_map	ft_initmap(void)
-{
-	t_map	map;
-
-	map.n_row = 0;
-	map.n_col = 0;
-	map.n_exit = 0;
-	map.n_pl = 0;
-	map.n_collect = 0;
-	return (map);
 }
