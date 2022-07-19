@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 14:31:21 by daparici          #+#    #+#             */
-/*   Updated: 2022/06/24 14:44:51 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/19 21:07:40 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ void	ft_read_map(int fd, t_map *map, char **map_str)
 		{
 			if (map->n_row < 3 && map->n_col < 3)
 				error_msg("Map is empty!");
-			else
-				ft_add_map_params(last_line, map);
 			free(last_line);
 			break ;
 		}
 		free(last_line);
-		ft_add_map_params(line, map);
+		if (!map->n_col)
+			map->n_col = ft_strlen(line) - 1;
 		last_line = ft_substr(line, 0, ft_strlen(line));
 		free(line);
 		*map_str = ft_strjoin(*map_str, last_line);
@@ -40,29 +39,20 @@ void	ft_read_map(int fd, t_map *map, char **map_str)
 	}
 }
 
-void	ft_add_map_params(char *line, t_map	*map)
+void	ft_count_params(t_map *map, int i, int k)
 {
-	if (!map->n_col)
-		map->n_col = ft_strlen(line) - 1;
-	map->n_exit += ft_count_params(line, 'E');
-	map->n_pl += ft_count_params(line, 'P');
-	map->n_collect += ft_count_params(line, 'C');
-}
-
-int	ft_count_params(char *line, char c)
-{
-	int	count;
-
-	count = 0;
-	if (!line)
-		return (0);
-	while (*line)
+	if (map->split_map[i][k] == 'E')
+		map->n_exit += 1;
+	if (map->split_map[i][k] == 'C')
+		map->n_collect += 1;
+	if (map->split_map[i][k] == 'P')
 	{
-		if (*line == c)
-			count++;
-		line++;
+		printf("%d\n%d\n", i, k);
+		map->n_pl += 1;
+		map->py = i;
+		map->px = k;
+		printf("%i\n%i\n", map->px, map->py);
 	}
-	return (count);
 }
 
 int	check_map_error(t_map *map)
@@ -70,14 +60,15 @@ int	check_map_error(t_map *map)
 	int	i;
 	int	k;
 
-	i = 0;
-	while (map->split_map[i])
+	i = -1;
+	while (map->split_map[++i])
 	{
-		k = 0;
+		k = -1;
 		if (ft_strlen(map->split_map[0]) != ft_strlen(map->split_map[i]))
 			error_msg("Map must be rectangular!");
-		while (map->split_map[i][k])
+		while (map->split_map[i][++k])
 		{
+			ft_count_params(map, i, k);
 			if (map->split_map[0][k] != '1' ||
 				map->split_map[map->n_row - 1][k] != '1'
 				|| map->split_map[i][0] != '1' ||
@@ -87,9 +78,7 @@ int	check_map_error(t_map *map)
 					map->split_map[i][k] != 'P' && map->split_map[i][k] != 'C'
 					&& map->split_map[i][k] != 'E')
 				error_msg("Invalid map, check parameters");
-			k++;
 		}
-		i++;
 	}
 	return (0);
 }

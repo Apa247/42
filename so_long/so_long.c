@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/18 20:22:22 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/19 20:52:22 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	map = ft_calloc(sizeof(t_map), 1);
+	map = (t_map *)ft_calloc(sizeof(t_map), 1);
 	map = params_init(map);
 	check_map(argc, argv, map);
 	start_game(map);
@@ -37,6 +37,8 @@ t_map	*params_init(t_map *map)
 	map->n_col = 0;
 	map->n_exit = 0;
 	map->n_pl = 0;
+	map->px = 0;
+	map->py = 0;
 	map->n_collect = 0;
 	map->n_frames = 0;
 	map->n_moves = 0;
