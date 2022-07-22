@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/19 20:52:22 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:25:24 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_map	*params_init(t_map *map)
 	map->n_pl = 0;
 	map->px = 0;
 	map->py = 0;
+	map->keycode_c = '\0';
 	map->n_collect = 0;
 	map->n_frames = 0;
 	map->n_moves = 0;

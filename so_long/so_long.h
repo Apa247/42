@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/21 20:26:56 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:24:42 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_map
 	int				n_pl;
 	int				px;
 	int				py;
+	int				keycode_c;
 	int				n_collect;
 	int				n_moves;
 	unsigned long	n_frames;
@@ -61,7 +62,8 @@ t_map	*params_init(t_map *map);
 //void	freemap(t_map *map);
 int		closewin(t_map *map);
 int		key_select(int keycode, t_map *map);
-void	move_goku_y(t_map *map);
+int		move_goku_y(t_map *map);
 int		render_next_frame(t_map *map);
+void	put_goku_map(t_map *map);
 
 #endif

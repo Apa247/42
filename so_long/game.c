@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/21 20:30:34 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:47:48 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	closewin(t_map *map)
 
 int	render_next_frame(t_map *map)
 {
+	if (map->keycode_c == 13 || map->keycode_c == 1)
+		move_goku_y(map);
 	map->n_frames++;
 	return (1);
 }
@@ -51,9 +53,9 @@ void	start_game(t_map *map)
 	map->mlx_window = mlx_new_window(map->mlx, map->n_col * SIZE, \
 		map->n_row * SIZE, "So_long");
 	put_imagen_map(map);
-	mlx_loop_hook(map->mlx, render_next_frame, map);
 	mlx_hook(map->mlx_window, 17, 1L << 17, closewin, map);
 	mlx_key_hook(map->mlx_window, key_select, map);
+	mlx_loop_hook(map->mlx, render_next_frame, map);
 	mlx_loop(map->mlx);
 }
 
@@ -67,47 +69,61 @@ int	key_select(int keycode, t_map *map)
 		printf("finished!\n");
 	//	freemap(map);
 		exit(0);
+		return (1);
 	}
-	if (keycode == 13 || keycode == 1)
+	if (keycode == 13 && map->split_map[map->py -1][map->px] != '1')
 	{
 		map->n_frames = 0;
-		move_goku_y(map);
-		return(1);
+		map->keycode_c = keycode;
+		return (1);
+	}
+	if (keycode == 1 && map->split_map[map->py + 1][map->px] != '1')
+	{
+		map->n_frames = 0;
+		map->keycode_c = keycode;
+		return (1);
 	}
 	return (0);
 }
 
-void	move_goku_y(t_map *map)
+int	move_goku_y(t_map *map)
 {
-	if (map->split_map[map->py - 1][map->px] != '1'
-			&& map->split_map[map->py - 1][map->px] != 'E')
+	if (map->n_frames == 1)
 	{
-		while (1)
-		{
-			if (map->n_frames == 100)
-			{
-				printf("hola\n");
-				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
-				put_imagen_xpm(map, "./sprites/goku_move_y.xpm",
-					map->py, map->px);
-			}
-			if (map->n_frames == 100000000)
-			{
-				printf("hola\n");
-				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
-				put_imagen_xpm(map, "./sprites/goku_move_y2.xpm",
-				map->py, map->px);
-			}
-			if (map->n_frames == 10000000000)
-			{
-				printf("hola\n");
-				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
-				map->n_frames = 0;
-				break ;
-			}
-			map->n_frames++;
-			//printf("%i\n", map->n_frames);
-		}
+		put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+		put_imagen_xpm(map, "./sprites/goku_move_y.xpm",
+			map->py, map->px);
+	}
+	if (map->n_frames == 500)
+	{
+		put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+		put_imagen_xpm(map, "./sprites/goku_move_y2.xpm",
+			map->py, map->px);
+	}
+	if (map->n_frames == 900)
+	{
+		put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+		put_goku_map(map);
+		map->split_map[map->py][map->px] = '0';
+		return (1);
+	}
+	else
+		return (0);
+}
+
+void	put_goku_map(t_map *map)
+{
+	if (map->keycode_c == 13)
+	{
+			map->py--;
+			map->split_map[map->py][map->px] = 'P';
+			put_imagen_xpm(map, "./sprites/goku.xpm", map->py, map->px);
+	}
+	if (map->keycode_c == 1)
+	{
+		map->py++;
+		map->split_map[map->py][map->px] = 'P';
+		put_imagen_xpm(map, "./sprites/goku.xpm", map->py, map->px);
 	}
 }
 
@@ -138,7 +154,6 @@ int	put_imagen_map(t_map *map)
 		}
 	}
 	//printf("%i\n", map->n_frames);
-	
 	return (1);
 }
 
