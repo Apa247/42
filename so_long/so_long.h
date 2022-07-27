@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/22 20:24:42 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:37:11 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-# include "./mlx/mlx.h"
+# include <mlx.h>
+// # include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
 #include <OpenGL/gl.h>
@@ -45,9 +46,10 @@ typedef struct s_map
 	int				keycode_c;
 	int				ki;
 	int				n_collect;
+	int				frame_exit;
 	int				exit_open;
-	int				E_x;
-	int				E_y;
+	int				e_x;
+	int				e_y;
 	int				n_moves;
 	unsigned long	n_frames;
 	int				width;
@@ -71,7 +73,7 @@ t_map	*params_init(t_map *map);
 int		closewin(t_map *map);
 int		key_select(int keycode, t_map *map);
 int		render_next_frame(t_map *map);
-void	key_y(int keycode,t_map *map, int *i);
+void	key_y(int keycode, t_map *map, int *i);
 void	key_x(int keycode, t_map *map, int *i);
 void	put_goku_map(t_map *map);
 void	move_goku_y(t_map *map);
@@ -80,5 +82,7 @@ void	move_goku_x_right(t_map *map);
 void	move_goku_x_left(t_map *map);
 void	open_exit(t_map *map);
 void	power_ki(t_map *map);
+void	key_x_left(int keycode, t_map *map, int *i);
+void	key_x_right(int keycode, t_map *map, int *i);
 
 #endif

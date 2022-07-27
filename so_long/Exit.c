@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/22 20:47:48 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:09:28 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,37 @@ void	open_exit(t_map *map)
 	int	k;
 
 	i = -1;
-	while (map->split_map[++i] && map->n_frames == 4500 && map->n_exit != 0)
+	while (map->split_map[++i] && map->frame_exit == 100 && map->n_exit != 0)
 	{
 		k = -1;
 		while (map->split_map[i][++k])
 		{
-			if ( map->split_map[i][k] == 'E')
+			if (map->split_map[i][k] == 'E')
 			{
-				map->E_x = k;
-				map->E_y = i;
+				map->e_x = k;
+				map->e_y = i;
 				break ;
 			}
 		}
 	}
-	if (map->n_frames == 4800 && map->n_exit != 0)
-		put_imagen_xpm(map, "./sprites/puff.xpm", map->E_y, map->E_x);
-	if (map->n_frames == 5200 && map->n_exit != 0)
+	if (map->frame_exit == 800 && map->n_exit != 0)
+		put_imagen_xpm(map, "./sprites/puff.xpm", map->e_y, map->e_x);
+	if (map->frame_exit == 1600 && map->n_exit != 0)
 	{
-		put_imagen_xpm(map, "./sprites/suelo.xpm", map->E_y, map->E_x);
-		put_imagen_xpm(map, "./sprites/puff2.xpm", map->E_y, map->E_x);
+		put_imagen_xpm(map, "./sprites/suelo.xpm", map->e_y, map->e_x);
+		put_imagen_xpm(map, "./sprites/puff2.xpm", map->e_y, map->e_x);
 	}
-	if (map->n_frames == 5600 && map->n_exit != 0)
+	if (map->frame_exit == 2400 && map->n_exit != 0)
 	{
-		put_imagen_xpm(map, "./sprites/salida.xpm", map->E_y, map->E_x);
-		map->split_map[map->E_y][map->E_x] = 'O';
+		put_imagen_xpm(map, "./sprites/salida.xpm", map->e_y, map->e_x);
+		map->split_map[map->e_y][map->e_x] = 'O';
 		map->n_exit -= 1;
 		if (map->n_exit != 0)
-			map->n_frames = 4499;
+			map->frame_exit = 99;
 		if (map->n_exit == 0)
-		{
-			map->exit_open = 1;
-			map->n_frames = 5601;
-		}
+			map->frame_exit = 5601;
+		// {
+		// 	map->exit_open = 1;
+		// }
 	}
-
 }

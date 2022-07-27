@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/22 20:25:24 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:37:40 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ t_map	*params_init(t_map *map)
 	map->pl_dir = 0;
 	map->keycode_c = 1000;
 	map->n_collect = 0;
-	map->exit_open = 0;
-	map->E_x = 0;
-	map->E_y = 0;
+	map->exit_open = 1;
+	map->e_x = 0;
+	map->e_y = 0;
+	map->frame_exit = 0;
 	map->ki = 0;
 	map->n_frames = 0;
 	map->n_moves = 0;
