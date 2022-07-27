@@ -19,6 +19,21 @@ int	error_msg(char *msg)
 	return (0);
 }
 
+int	closewin(t_map *map)
+{
+//	freemap(map);
+	if (map->n_exit == 0)
+	{
+		printf("You win\n");
+		exit (0);
+		return (0);
+	}
+	printf("Finished\n");
+	exit (0);
+	if (map)
+		return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	*map;
@@ -39,8 +54,13 @@ t_map	*params_init(t_map *map)
 	map->n_pl = 0;
 	map->px = 0;
 	map->py = 0;
-	map->keycode_c = '\0';
+	map->pl_dir = 0;
+	map->keycode_c = 1000;
 	map->n_collect = 0;
+	map->exit_open = 0;
+	map->E_x = 0;
+	map->E_y = 0;
+	map->ki = 0;
 	map->n_frames = 0;
 	map->n_moves = 0;
 	map->width = 0;

@@ -23,9 +23,12 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-# include <mlx.h>
+# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
+#include <OpenGL/gl.h>
+#include <OpenGl/glu.h>
+#include <GLUT/glut.h>
 
 typedef struct s_map
 {
@@ -38,8 +41,13 @@ typedef struct s_map
 	int				n_pl;
 	int				px;
 	int				py;
+	int				pl_dir;
 	int				keycode_c;
+	int				ki;
 	int				n_collect;
+	int				exit_open;
+	int				E_x;
+	int				E_y;
 	int				n_moves;
 	unsigned long	n_frames;
 	int				width;
@@ -62,8 +70,15 @@ t_map	*params_init(t_map *map);
 //void	freemap(t_map *map);
 int		closewin(t_map *map);
 int		key_select(int keycode, t_map *map);
-int		move_goku_y(t_map *map);
 int		render_next_frame(t_map *map);
+void	key_y(int keycode,t_map *map, int *i);
+void	key_x(int keycode, t_map *map, int *i);
 void	put_goku_map(t_map *map);
+void	move_goku_y(t_map *map);
+void	move_goku_x(t_map *map);
+void	move_goku_x_right(t_map *map);
+void	move_goku_x_left(t_map *map);
+void	open_exit(t_map *map);
+void	power_ki(t_map *map);
 
 #endif

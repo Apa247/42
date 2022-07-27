@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address -g3
 AR = ar rcs
 
-SRCS = so_long.c check_map_1.c check_map_2.c game.c
+SRCS = so_long.c check_map_1.c check_map_2.c game.c Exit.c
 GNL = get_next_line.c get_next_line_utils.c
 GNLPATH = $(addprefix ./GetNextLine/,$(GNL))
 LIBFT = ./Libft/libft.a
@@ -29,7 +29,7 @@ GNLOBJ = $(GNLPATH:.c=.o)
 $(NAME): $(OBJS) $(GNLOBJ)
 		make bonus -C ./Libft;
 #		$(CC) $(CFLAGS) $(OBJS) $(GNLOBJ) $(LIBFT) -L ./Libft -l ft -o -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-		$(CC) $(CFLAGS) $(OBJS) $(GNLOBJ) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) $(GNLOBJ) $(LIBFT) -L mlx -l mlx -framework OpenGL -framework AppKit -o $(NAME)	
 	
 all: $(NAME)
 
