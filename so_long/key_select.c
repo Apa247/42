@@ -12,27 +12,6 @@
 
 #include "so_long.h"
 
-int	key_select(int keycode, t_map *map)
-{
-	int	i;
-
-	i = 0;
-	printf("%i\n", keycode);
-	if (keycode == 53)
-	{
-		printf("finished!\n");
-	//	freemap(map);
-		exit(0);
-		return (1);
-	}
-	if (map->n_frames > 1200 && map->ki == 0)
-	{
-		key_y(keycode, map, &i);
-		key_x(keycode, map, &i);
-	}
-	return (i);
-}
-
 void	key_x(int keycode, t_map *map, int *i)
 {
 	key_x_left(keycode, map, i);
@@ -57,7 +36,6 @@ void	key_x_right(int keycode, t_map *map, int *i)
 		{
 			map->n_collect -= 1;
 			map->frame_exit = 0;
-			printf("%i\n", map->n_collect);
 		}
 		map->n_frames = 0;
 		map->keycode_c = keycode;
@@ -83,7 +61,6 @@ void	key_x_left(int keycode, t_map *map, int *i)
 		{
 			map->n_collect -= 1;
 			map->frame_exit = 0;
-			printf("%i\n", map->n_collect);
 		}
 		map->n_frames = 0;
 		map->keycode_c = keycode;
@@ -102,7 +79,6 @@ void	key_y(int keycode, t_map *map, int *i)
 		{
 			map->n_collect -= 1;
 			map->frame_exit = 0;
-			printf("%i\n", map->n_collect);
 		}
 		map->n_frames = 0;
 		map->keycode_c = keycode;
@@ -117,7 +93,6 @@ void	key_y(int keycode, t_map *map, int *i)
 		{
 			map->n_collect -= 1;
 			map->frame_exit = 0;
-			printf("%i\n", map->n_collect);
 		}
 		map->n_frames = 0;
 		map->keycode_c = keycode;

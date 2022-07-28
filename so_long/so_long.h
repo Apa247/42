@@ -23,8 +23,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-# include <mlx.h>
-// # include "./mlx/mlx.h"
+//# include <mlx.h>
+# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
 #include <OpenGL/gl.h>
@@ -45,6 +45,7 @@ typedef struct s_map
 	int				pl_dir;
 	int				keycode_c;
 	int				ki;
+	int				supergoku;
 	int				n_collect;
 	int				frame_exit;
 	int				exit_open;
@@ -84,5 +85,14 @@ void	open_exit(t_map *map);
 void	power_ki(t_map *map);
 void	key_x_left(int keycode, t_map *map, int *i);
 void	key_x_right(int keycode, t_map *map, int *i);
+void	super_power_ki(t_map *map);
+void	move_frame(unsigned long frame, t_map *map, char *image);
+void	put_goku_map_x(t_map *map);
+void	put_goku_map_y(t_map *map);
+void	move_supergoku_y(t_map *map);
+void	put_supergoku_map_y(t_map *map);
+void	move_supergoku_x_left(t_map *map);
+void	move_supergoku_x_right(t_map *map);
+void	put_supergoku_map_x(t_map *map);
 
 #endif

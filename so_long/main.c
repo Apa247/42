@@ -62,6 +62,7 @@ t_map	*params_init(t_map *map)
 	map->e_y = 0;
 	map->frame_exit = 0;
 	map->ki = 0;
+	map->supergoku = 0;
 	map->n_frames = 0;
 	map->n_moves = 0;
 	map->width = 0;
