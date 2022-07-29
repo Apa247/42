@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 14:31:21 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/19 21:07:40 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:42:41 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	check_map_error(t_map *map)
 				error_msg("Map must be surrounded by walls!");
 			if (map->split_map[i][k] != '0' && map->split_map[i][k] != '1' &&
 					map->split_map[i][k] != 'P' && map->split_map[i][k] != 'C'
-					&& map->split_map[i][k] != 'E' && map->split_map[i][k] != 'T')
+					&& map->split_map[i][k] != 'E' &&
+					map->split_map[i][k] != 'T')
 				error_msg("Invalid map, check parameters");
 		}
 	}

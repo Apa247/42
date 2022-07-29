@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:27:41 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 18:37:40 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:24:58 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	map = (t_map *)ft_calloc(sizeof(t_map), 1);
 	map = params_init(map);
 	check_map(argc, argv, map);
+	map->copy_n_enemies = map->n_enemies;
 	start_game(map);
 	printf("%s\n", "OK");
 	return (0);
@@ -55,6 +56,7 @@ t_map	*params_init(t_map *map)
 	map->px = 0;
 	map->py = 0;
 	map->n_enemies = 0;
+	map->copy_n_enemies = 0;
 	map->frames_enemies = 0;
 	map->pl_dir = 0;
 	map->keycode_c = 1000;

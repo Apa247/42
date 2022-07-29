@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 18:37:11 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:19:42 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-//# include <mlx.h>
-# include "./mlx/mlx.h"
+# include <mlx.h>
+//# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
-#include <OpenGL/gl.h>
-#include <OpenGl/glu.h>
-#include <GLUT/glut.h>
+# include <OpenGL/gl.h>
+# include <OpenGl/glu.h>
+# include <GLUT/glut.h>
 
 typedef struct s_map
 {
@@ -41,6 +41,7 @@ typedef struct s_map
 	int				n_exit;
 	int				n_pl;
 	int				n_enemies;
+	int				copy_n_enemies;
 	int				frames_enemies;
 	int				px;
 	int				py;
@@ -58,7 +59,6 @@ typedef struct s_map
 	int				width;
 	int				height;
 }				t_map;
-
 
 int		error_msg(char *msg);
 void	check_map(int argc, char **argv, t_map *map);
@@ -97,7 +97,7 @@ void	put_supergoku_map_y(t_map *map);
 void	move_supergoku_x_left(t_map *map);
 void	move_supergoku_x_right(t_map *map);
 void	put_supergoku_map_x(t_map *map);
-void    move_enemies(t_map *map);
+void	move_enemies(t_map *map);
 void	move_enemy_frame(int frame, t_map *map, char *image, int y, int x);
 
 #endif

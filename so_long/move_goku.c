@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 17:35:57 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 17:36:31 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:41:45 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	move_goku_y(t_map *map)
 			put_imagen_xpm(map, "./sprites/goku_move_y.xpm",
 				map->py, map->px);
 		else
-			put_imagen_xpm(map, "./sprites/goku_move_y_left.xpm", map->py, map->px);
+			put_imagen_xpm(map, "./sprites/goku_move_y_left.xpm",
+				map->py, map->px);
 	}
 	if (map->n_frames == 400)
 	{
@@ -70,9 +71,10 @@ void	move_goku_y(t_map *map)
 			put_imagen_xpm(map, "./sprites/goku_move_y_borroso.xpm",
 				map->py, map->px);
 		else
-			put_imagen_xpm(map, "./sprites/goku_move_y_borroso2.xpm", map->py, map->px);
+			put_imagen_xpm(map, "./sprites/goku_move_y_borroso2.xpm",
+				map->py, map->px);
 	}
-    move_frame(800, map, "./sprites/goku_move_y_bueno.xpm");
+	move_frame(800, map, "./sprites/goku_move_y_bueno.xpm");
 	if (map->n_frames == 1200)
 	{
 		put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);

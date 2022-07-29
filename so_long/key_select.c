@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 17:37:52 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 19:13:38 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:20:56 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,20 @@ void	key_x_right(int keycode, t_map *map, int *i)
 			closewin(map);
 		if (map->pl_dir == 1)
 		{
-			put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
-			put_imagen_xpm(map, "./sprites/goku_buena.xpm",
-				map->py, map->px);
-			map->pl_dir = 0;
+			if (map->supergoku == 0)
+			{
+				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+				put_imagen_xpm(map, "./sprites/goku_buena.xpm",
+					map->py, map->px);
+				map->pl_dir = 0;
+			}
+			else
+			{
+				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+				put_imagen_xpm(map, "./sprites/supergoku_right.xpm",
+					map->py, map->px);
+				map->pl_dir = 0;
+			}
 		}
 		if (map->split_map[map->py][map->px + 1] == 'C')
 		{
@@ -54,10 +64,20 @@ void	key_x_left(int keycode, t_map *map, int *i)
 			closewin(map);
 		if (map->pl_dir == 0)
 		{
-			put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
-			put_imagen_xpm(map, "./sprites/goku_left.xpm",
-				map->py, map->px);
-			map->pl_dir = 1;
+			if (map->supergoku == 0)
+			{
+				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+				put_imagen_xpm(map, "./sprites/goku_left.xpm",
+					map->py, map->px);
+				map->pl_dir = 1;
+			}
+			else
+			{
+				put_imagen_xpm(map, "./sprites/suelo.xpm", map->py, map->px);
+				put_imagen_xpm(map, "./sprites/supergoku_left.xpm",
+					map->py, map->px);
+				map->pl_dir = 1;
+			}
 		}
 		if (map->split_map[map->py][map->px - 1] == 'C')
 		{

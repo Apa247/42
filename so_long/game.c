@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 19:06:11 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:06:02 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	render_next_frame(t_map *map)
 	{
 		if (map->supergoku == 0)
 			move_goku_y(map);
-		else 
+		else
 			move_supergoku_y(map);
 	}
 	if (map->keycode_c == 0 || map->keycode_c == 2)
@@ -51,10 +51,9 @@ int	render_next_frame(t_map *map)
 	map->frame_exit++;
 	map->n_frames++;
 	map->frames_enemies++;
-	printf("%lu\n", map->n_frames);
+	printf("%i\n", map->frames_enemies);
 	return (1);
 }
-
 
 void	start_game(t_map *map)
 {

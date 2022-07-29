@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 17:35:57 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 17:36:31 by daparici         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:39:32 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	put_goku_map(t_map *map)
 {
-	if (map->supergoku == 0 && (map->keycode_c == 13 ||
-		map->keycode_c == 1))
+	if (map->supergoku == 0 && (map->keycode_c == 13
+			|| map->keycode_c == 1))
 		put_goku_map_y(map);
-	if (map->supergoku == 1 && (map->keycode_c == 13 ||
-		map->keycode_c == 1))
+	if (map->supergoku == 1 && (map->keycode_c == 13
+			|| map->keycode_c == 1))
 		put_supergoku_map_y(map);
-	if (map->supergoku == 0 && (map->keycode_c == 0 ||
-		map->keycode_c == 2))
+	if (map->supergoku == 0 && (map->keycode_c == 0
+			|| map->keycode_c == 2))
 		put_goku_map_x(map);
-	if (map->supergoku == 1 && (map->keycode_c == 0 ||
-		map->keycode_c == 2))
+	if (map->supergoku == 1 && (map->keycode_c == 0
+			|| map->keycode_c == 2))
 		put_supergoku_map_x(map);
 }
 
@@ -40,7 +40,7 @@ void	put_goku_map_x(t_map *map)
 		if (map->split_map[map->py][map->px] == 'C')
 			map->ki = 1;
 		map->split_map[map->py][map->px] = 'P';
-        move_frame(1300, map, "./sprites/goku_left.xpm");
+		move_frame(1300, map, "./sprites/goku_left.xpm");
 	}
 	if (map->keycode_c == 2 && map->n_frames == 800)
 	{
@@ -52,7 +52,7 @@ void	put_goku_map_x(t_map *map)
 		if (map->split_map[map->py][map->px] == 'C')
 			map->ki = 1;
 		map->split_map[map->py][map->px] = 'P';
-        move_frame(1300, map, "./sprites/goku_buena.xpm");
+		move_frame(1300, map, "./sprites/goku_buena.xpm");
 	}
 }
 
@@ -65,9 +65,9 @@ void	put_goku_map_y(t_map *map)
 			map->ki = 1;
 		map->split_map[map->py][map->px] = 'P';
 		if (map->pl_dir == 0)
-            move_frame(1200, map, "./sprites/goku_buena.xpm");
+			move_frame(1200, map, "./sprites/goku_buena.xpm");
 		else
-            move_frame(1200, map, "./sprites/goku_left.xpm");
+			move_frame(1200, map, "./sprites/goku_left.xpm");
 	}
 	if (map->keycode_c == 1)
 	{
@@ -76,8 +76,8 @@ void	put_goku_map_y(t_map *map)
 			map->ki = 1;
 		map->split_map[map->py][map->px] = 'P';
 		if (map->pl_dir == 0)
-            move_frame(1200, map, "./sprites/goku_buena.xpm");
+			move_frame(1200, map, "./sprites/goku_buena.xpm");
 		else
-            move_frame(1200, map, "./sprites/goku_left.xpm");
+			move_frame(1200, map, "./sprites/goku_left.xpm");
 	}
 }
