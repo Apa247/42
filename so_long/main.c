@@ -54,6 +54,8 @@ t_map	*params_init(t_map *map)
 	map->n_pl = 0;
 	map->px = 0;
 	map->py = 0;
+	map->n_enemies = 0;
+	map->frames_enemies = 0;
 	map->pl_dir = 0;
 	map->keycode_c = 1000;
 	map->n_collect = 0;

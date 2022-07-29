@@ -41,6 +41,8 @@ void	ft_read_map(int fd, t_map *map, char **map_str)
 
 void	ft_count_params(t_map *map, int i, int k)
 {
+	if (map->split_map[i][k] == 'T')
+		map->n_enemies += 1;
 	if (map->split_map[i][k] == 'E')
 		map->n_exit += 1;
 	if (map->split_map[i][k] == 'C')
@@ -76,7 +78,7 @@ int	check_map_error(t_map *map)
 				error_msg("Map must be surrounded by walls!");
 			if (map->split_map[i][k] != '0' && map->split_map[i][k] != '1' &&
 					map->split_map[i][k] != 'P' && map->split_map[i][k] != 'C'
-					&& map->split_map[i][k] != 'E')
+					&& map->split_map[i][k] != 'E' && map->split_map[i][k] != 'T')
 				error_msg("Invalid map, check parameters");
 		}
 	}

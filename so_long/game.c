@@ -32,6 +32,7 @@
 
 int	render_next_frame(t_map *map)
 {
+	move_enemies(map);
 	if ((map->keycode_c == 13 || map->keycode_c == 1))
 	{
 		if (map->supergoku == 0)
@@ -49,6 +50,8 @@ int	render_next_frame(t_map *map)
 		super_power_ki(map);
 	map->frame_exit++;
 	map->n_frames++;
+	map->frames_enemies++;
+	printf("%lu\n", map->n_frames);
 	return (1);
 }
 
@@ -78,7 +81,7 @@ int	key_select(int keycode, t_map *map)
 		exit(0);
 		return (1);
 	}
-	if (map->n_frames > 1200 && map->ki == 0)
+	if (map->n_frames > 1400 && map->ki == 0)
 	{
 		key_y(keycode, map, &i);
 		key_x(keycode, map, &i);
@@ -102,6 +105,11 @@ int	put_imagen_map(t_map *map)
 				put_imagen_xpm(map, "./sprites/pared.xpm", i, k);
 			if (map->split_map[i][k] == '0')
 				put_imagen_xpm(map, "./sprites/suelo.xpm", i, k);
+			if (map->split_map[i][k] == 'T')
+			{
+				put_imagen_xpm(map, "./sprites/suelo.xpm", i, k);
+				put_imagen_xpm(map, "./sprites/bubu_right.xpm", i, k);
+			}
 			if (map->split_map[i][k] == 'C')
 			{
 				put_imagen_xpm(map, "./sprites/suelo.xpm", i, k);

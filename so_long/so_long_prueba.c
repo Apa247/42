@@ -1,12 +1,13 @@
-int	main(int argc, char **argv)
-{
-	void    *mlx;
-    void    *mlx_w;
+#include <unistd.h>
 
-    mlx = mlx_init();
-    mlx_w =  mlx_new_window(mlx, 9 * 47, \
-		9 * 47, "So_lon");
-	printf("%s\n", "OK");
-    mlx_loop(mlx);
+int	main()
+{
+	char *a = "hola que tal estas";
+    while (*a)
+    {
+        if (*a == 'a')
+            printf("hola");
+    }
+
 	return (0);
 }

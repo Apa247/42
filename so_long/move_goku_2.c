@@ -14,13 +14,17 @@
 
 void	put_goku_map(t_map *map)
 {
-	if (map->supergoku == 0)
+	if (map->supergoku == 0 && (map->keycode_c == 13 ||
+		map->keycode_c == 1))
 		put_goku_map_y(map);
-	if (map->supergoku == 1)
+	if (map->supergoku == 1 && (map->keycode_c == 13 ||
+		map->keycode_c == 1))
 		put_supergoku_map_y(map);
-	if (map->supergoku == 0)
+	if (map->supergoku == 0 && (map->keycode_c == 0 ||
+		map->keycode_c == 2))
 		put_goku_map_x(map);
-	if (map->supergoku == 1)
+	if (map->supergoku == 1 && (map->keycode_c == 0 ||
+		map->keycode_c == 2))
 		put_supergoku_map_x(map);
 }
 
