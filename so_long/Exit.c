@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/27 19:09:28 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/04 12:17:33 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	open_exit(t_map *map)
 			}
 		}
 	}
+	open_exit_2(map);
+}
+
+void	open_exit_2(t_map *map)
+{
 	if (map->frame_exit == 800 && map->n_exit != 0)
 		put_imagen_xpm(map, "./sprites/puff.xpm", map->e_y, map->e_x);
 	if (map->frame_exit == 1600 && map->n_exit != 0)

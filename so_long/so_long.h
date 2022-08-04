@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/29 17:19:42 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:08:34 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ typedef struct s_map
 	int				n_enemies;
 	int				copy_n_enemies;
 	int				frames_enemies;
+	int				enemy_x;
+	int				enemy_y;
+	int				enemy_dir_y;
+	int				enemy_dir_x;
 	int				px;
 	int				py;
 	int				pl_dir;
@@ -85,6 +89,7 @@ void	move_goku_x(t_map *map);
 void	move_goku_x_right(t_map *map);
 void	move_goku_x_left(t_map *map);
 void	open_exit(t_map *map);
+void	open_exit_2(t_map *map);
 void	power_ki(t_map *map);
 void	key_x_left(int keycode, t_map *map, int *i);
 void	key_x_right(int keycode, t_map *map, int *i);
@@ -98,6 +103,9 @@ void	move_supergoku_x_left(t_map *map);
 void	move_supergoku_x_right(t_map *map);
 void	put_supergoku_map_x(t_map *map);
 void	move_enemies(t_map *map);
-void	move_enemy_frame(int frame, t_map *map, char *image, int y, int x);
+void	move_enemies_2(t_map *map, int i, int k);
+void	move_enemy_y(t_map *map);
+void	move_enemy_x(t_map *map);
+void	move_enemy_frame(int frame, t_map *map, char *image);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:17:28 by daparici          #+#    #+#             */
-/*   Updated: 2022/07/29 17:06:02 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/04 12:24:01 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	render_next_frame(t_map *map)
 	map->frame_exit++;
 	map->n_frames++;
 	map->frames_enemies++;
-	printf("%i\n", map->frames_enemies);
+	//printf("%i\n", map->frames_enemies);
 	return (1);
 }
 
