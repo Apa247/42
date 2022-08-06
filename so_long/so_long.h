@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/08/04 14:08:34 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:59:05 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-//# include <mlx.h>
-# include "./mlx/mlx.h"
+# include <mlx.h>
+//# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
 # include <OpenGL/gl.h>
