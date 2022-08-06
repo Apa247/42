@@ -24,7 +24,8 @@ void	key_x_right(int keycode, t_map *map, int *i)
 		map->split_map[map->py][map->px + 1] != 'E')
 	{
 		if (map->split_map[map->py][map->px + 1] == 'O' ||
-			map->split_map[map->py][map->px + 1] == 'T')
+			map->split_map[map->py][map->px + 1] == 'T' ||
+			map->split_map[map->py][map->px + 1] == 'N')
 			closewin(map);
 		if (map->pl_dir == 1)
 		{
@@ -60,7 +61,8 @@ void	key_x_left(int keycode, t_map *map, int *i)
 		map->split_map[map->py][map->px - 1] != 'E')
 	{
 		if (map->split_map[map->py][map->px - 1] == 'O' ||
-			map->split_map[map->py][map->px - 1] == 'T')
+			map->split_map[map->py][map->px - 1] == 'T' ||
+			map->split_map[map->py][map->px - 1] == 'N')
 			closewin(map);
 		if (map->pl_dir == 0)
 		{
@@ -96,7 +98,8 @@ void	key_y(int keycode, t_map *map, int *i)
 		map->split_map[map->py -1][map->px] != 'E')
 	{
 		if (map->split_map[map->py - 1][map->px] == 'O' ||
-			map->split_map[map->py - 1][map->px] == 'T')
+			map->split_map[map->py - 1][map->px] == 'T' ||
+			map->split_map[map->py - 1][map->px] == 'N')
 			closewin(map);
 		if (map->split_map[map->py -1][map->px] == 'C')
 		{
@@ -111,7 +114,8 @@ void	key_y(int keycode, t_map *map, int *i)
 		map->split_map[map->py + 1][map->px] != 'E')
 	{
 		if (map->split_map[map->py + 1][map->px] == 'O' ||
-			map->split_map[map->py + 1][map->px] == 'T')
+			map->split_map[map->py + 1][map->px] == 'T' ||
+			map->split_map[map->py + 1][map->px] == 'N')
 			closewin(map);
 		if (map->split_map[map->py + 1][map->px] == 'C')
 		{

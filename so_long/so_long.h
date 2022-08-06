@@ -23,8 +23,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-# include <mlx.h>
-//# include "./mlx/mlx.h"
+//# include <mlx.h>
+# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
 # include <OpenGL/gl.h>
@@ -42,6 +42,7 @@ typedef struct s_map
 	int				n_pl;
 	int				n_enemies;
 	int				copy_n_enemies;
+	int				enemies_copy;
 	int				frames_enemies;
 	int				enemy_x;
 	int				enemy_y;
@@ -77,6 +78,7 @@ int		put_imagen_map(t_map *map);
 void	get_type_params(t_map map, int i, int k);
 void	put_imagen_xpm(t_map *map, char *adress_img, int x, int y);
 t_map	*params_init(t_map *map);
+t_map	*params_init_2(t_map *map);
 //void	freemap(t_map *map);
 int		closewin(t_map *map);
 int		key_select(int keycode, t_map *map);
