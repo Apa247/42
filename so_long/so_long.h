@@ -23,8 +23,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-# include <mlx.h>
-//# include "./mlx/mlx.h"
+//# include <mlx.h>
+# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
 # include <OpenGL/gl.h>
