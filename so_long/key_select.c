@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 17:37:52 by daparici          #+#    #+#             */
-/*   Updated: 2022/08/06 20:26:49 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:24:25 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	key_x_right(int keycode, t_map *map, int *i)
 	{
 		if (map->split_map[map->py][map->px + 1] == 'O' ||
 			map->split_map[map->py][map->px + 1] == 'T' ||
-			map->split_map[map->py][map->px + 1] == 't')
+			map->split_map[map->py][map->px + 1] == 't' ||
+			(map->px + 1) == map->enemy_dir_x)
 			closewin(map);
 		if (map->pl_dir == 1)
 		{
@@ -62,7 +63,8 @@ void	key_x_left(int keycode, t_map *map, int *i)
 	{
 		if (map->split_map[map->py][map->px - 1] == 'O' ||
 			map->split_map[map->py][map->px - 1] == 'T' ||
-			map->split_map[map->py][map->px - 1] == 't')
+			map->split_map[map->py][map->px - 1] == 't' ||
+			(map->px - 1) == map->enemy_x)
 			closewin(map);
 		if (map->pl_dir == 0)
 		{
@@ -99,7 +101,8 @@ void	key_y(int keycode, t_map *map, int *i)
 	{
 		if (map->split_map[map->py - 1][map->px] == 'O' ||
 			map->split_map[map->py - 1][map->px] == 'T' ||
-			map->split_map[map->py - 1][map->px] == 't')
+			map->split_map[map->py - 1][map->px] == 't' ||
+			(map->py - 1) == map->enemy_y)
 			closewin(map);
 		if (map->split_map[map->py -1][map->px] == 'C')
 		{
@@ -115,7 +118,8 @@ void	key_y(int keycode, t_map *map, int *i)
 	{
 		if (map->split_map[map->py + 1][map->px] == 'O' ||
 			map->split_map[map->py + 1][map->px] == 'T' ||
-			map->split_map[map->py + 1][map->px] == 't')
+			map->split_map[map->py + 1][map->px] == 't' ||
+			(map->py - 1) == map->enemy_y)
 			closewin(map);
 		if (map->split_map[map->py + 1][map->px] == 'C')
 		{

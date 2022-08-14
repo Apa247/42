@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/08/06 19:59:05 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/14 20:29:17 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
-//# include <mlx.h>
-# include "./mlx/mlx.h"
+# include <mlx.h>
+//# include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 # include "./GetNextLine/get_next_line.h"
 # include <OpenGL/gl.h>
@@ -46,10 +46,16 @@ typedef struct s_map
 	int				frames_enemies;
 	int				enemy_x;
 	int				enemy_y;
+	int				copy_enemy_x;
+	int				copy_enemy_y;
 	int				enemy_dir_y;
 	int				enemy_dir_x;
+	int				move_enemy_y;
+	int				move_enemy_x;
 	int				px;
 	int				py;
+	int				copy_px;
+	int				copy_py;
 	int				pl_dir;
 	int				keycode_c;
 	int				ki;
