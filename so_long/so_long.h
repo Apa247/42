@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:16:01 by daparici          #+#    #+#             */
-/*   Updated: 2022/08/14 20:29:17 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:06:07 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,11 @@ void	ft_count_params(t_map *map, int i, int k);
 int		check_map_error(t_map *map);
 t_map	ft_initmap(void);
 void	start_game(t_map *map);
-int		put_imagen_map(t_map *map);
+void	put_imagen_map(t_map *map);
 void	get_type_params(t_map map, int i, int k);
 void	put_imagen_xpm(t_map *map, char *adress_img, int x, int y);
 t_map	*params_init(t_map *map);
 t_map	*params_init_2(t_map *map);
-//void	freemap(t_map *map);
 int		closewin(t_map *map);
 int		key_select(int keycode, t_map *map);
 int		render_next_frame(t_map *map);
@@ -93,6 +92,7 @@ void	key_y(int keycode, t_map *map, int *i);
 void	key_x(int keycode, t_map *map, int *i);
 void	put_goku_map(t_map *map);
 void	move_goku_y(t_map *map);
+void	move_goku_y_2(t_map *map);
 void	move_goku_x(t_map *map);
 void	move_goku_x_right(t_map *map);
 void	move_goku_x_left(t_map *map);
@@ -105,15 +105,21 @@ void	super_power_ki(t_map *map);
 void	move_frame(unsigned long frame, t_map *map, char *image);
 void	put_goku_map_x(t_map *map);
 void	put_goku_map_y(t_map *map);
-void	move_supergoku_y(t_map *map);
 void	put_supergoku_map_y(t_map *map);
+void	put_supergoku_map_x(t_map *map);
+void	move_supergoku_y(t_map *map);
 void	move_supergoku_x_left(t_map *map);
 void	move_supergoku_x_right(t_map *map);
-void	put_supergoku_map_x(t_map *map);
 void	move_enemies(t_map *map);
-void	move_enemies_2(t_map *map, int i, int k);
+void	move_enemies_params(t_map *map);
+int		move_enemies_identify(t_map *map, int i, int k);
 void	move_enemy_y(t_map *map);
+void	move_enemy_y_up(t_map *map);
+void	move_enemy_y_down(t_map *map);
 void	move_enemy_x(t_map *map);
+void	move_enemy_x_right(t_map *map);
+void	move_enemy_x_left(t_map *map);
 void	move_enemy_frame(int frame, t_map *map, char *image);
+void	print_map(t_map *map);
 
 #endif

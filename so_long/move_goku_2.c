@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 17:35:57 by daparici          #+#    #+#             */
-/*   Updated: 2022/08/06 20:55:19 by daparici         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:24:49 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,14 @@ void	put_goku_map_x(t_map *map)
 		put_imagen_xpm(map, "./sprites/goku_move_left3.xpm", map->py, map->px);
 	}
 	if (map->keycode_c == 0 && map->n_frames == 1300)
-	{
-		if (map->split_map[map->py][map->px] == 'C')
-			map->ki = 1;
-		map->split_map[map->py][map->px] = 'P';
 		move_frame(1300, map, "./sprites/goku_left.xpm");
-	}
 	if (map->keycode_c == 2 && map->n_frames == 800)
 	{
 		map->px++;
 		put_imagen_xpm(map, "./sprites/goku_move_left.xpm", map->py, map->px);
 	}
 	if (map->keycode_c == 2 && map->n_frames == 1300)
-	{
-		if (map->split_map[map->py][map->px] == 'C')
-			map->ki = 1;
-		map->split_map[map->py][map->px] = 'P';
 		move_frame(1300, map, "./sprites/goku_buena.xpm");
-	}
 }
 
 void	put_goku_map_y(t_map *map)
